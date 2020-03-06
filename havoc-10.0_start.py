@@ -3,6 +3,7 @@ import time
 import requests
 import conf
 import datetime
+import url
 
 currentDT = datetime.datetime.now()
 
@@ -29,8 +30,8 @@ def send_telegram_message(message):
         return False
 
 
-
-message = "Alert! Havoc-OS test build for Moto G5 Plus (potter) started at " + currentDT.strftime("%d-%m-%Y %H:%M:%S IST.")
-#message = "https://sourceforge.net/projects/unofficial-builds/files/DO-NOT-DOWNLOAD/aicp_potter_p-14.0-UNOFFICIAL-"+currentDT.strftime("%Y%m%d")+".zip/download"
+line1="Alert! Havoc-OS test build for Moto G5 Plus (potter) started at " + currentDT.strftime("%d-%m-%Y %H:%M:%S IST.")
+line2="\nJenkins URL: {}console".format(url.build_url)
+message = line1+line2
 telegram_status = send_telegram_message(message)
 print("This is the Telegram status:", telegram_status)
