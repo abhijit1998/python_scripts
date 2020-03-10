@@ -31,7 +31,7 @@ def send_telegram_message(message):
 
 
 line1 = "Alert! AICP-15.0 test builds for Moto G5 Plus (potter) completed at " + currentDT.strftime("%d-%m-%Y %H:%M:%S IST.\n")
-line2 = "Build will be available at https://sourceforge.net/projects/unofficial-builds/files/DO-NOT-DOWNLOAD/aicp_potter_p-15.0-UNOFFICIAL-"+currentDT.strftime("%Y%m%d")+".zip/download after some time."
+line2 = "Build will be available at https://sourceforge.net/projects/unofficial-builds/files/DO-NOT-DOWNLOAD/aicp_potter_q-15.0-UNOFFICIAL-"+currentDT.strftime("%Y%m%d")+".zip/download after some time."
 message = line1 + line2
 telegram_status = send_telegram_message(message)
 print("This is the Telegram status:", telegram_status)
