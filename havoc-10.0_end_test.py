@@ -42,7 +42,7 @@ def send_telegram_message(message):
 
 line1 = "Alert! Havoc-OS test build {build_name} for Moto G5 Plus (potter) completed at " + currentDT.strftime("%d-%m-%Y %H:%M:%S IST.\n")
 line2 = "Duration : " + total_execution_time
-line3 = "Build available at https://abhi-cloud.dyndns.org/index.php/s/1JgFedmXz3I5m3Q . "
+line3 = "\nBuild available at https://abhi-cloud.dyndns.org/index.php/s/1JgFedmXz3I5m3Q . "
 message = line1 + line2 + line3
 telegram_status = send_telegram_message(message)
 print("This is the Telegram status:", telegram_status)
