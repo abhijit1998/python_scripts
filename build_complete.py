@@ -8,16 +8,19 @@ import build
 
 currentDT = datetime.datetime.now()
 
-def convert(seconds): 
-    seconds = seconds % (24 * 3600) 
+
+def convert(seconds):
+    seconds = seconds % (24 * 3600)
     hour = seconds // 3600
     seconds %= 3600
     minutes = seconds // 60
     seconds %= 60
-    return "%dh %02dm %02ds" % (hour, minutes, seconds) 
+    return "%dh %02dm %02ds" % (hour, minutes, seconds)
 
-total_time=int(time_count.end_time)-int(time_count.start_time)
-total_execution_time=convert(total_time)
+
+total_time = int(time_count.end_time)-int(time_count.start_time)
+total_execution_time = convert(total_time)
+
 
 def send_telegram_message(message):
     """Sends message via Telegram"""
@@ -40,6 +43,7 @@ def send_telegram_message(message):
         print("An error occurred in sending the alert message via Telegram")
         print(e)
         return False
+
 
 line1 = "Alert! {} test build for Moto G5 Plus (potter) completed at ".format(build.build_name) + currentDT.strftime("%d-%m-%Y %H:%M:%S IST.\n")
 line2 = "Duration : {}\n".format(total_execution_time)

@@ -7,6 +7,7 @@ import build
 
 currentDT = datetime.datetime.now()
 
+
 def send_telegram_message(message):
     """Sends message via Telegram"""
     url = "https://api.telegram.org/" + conf.telegram_bot_id + "/sendMessage"
@@ -30,8 +31,8 @@ def send_telegram_message(message):
         return False
 
 
-line1="Alert! {} test build for Moto G5 Plus (potter) started at ".format(build.build_name) + currentDT.strftime("%d-%m-%Y %H:%M:%S IST.")
-line2="\nJenkins URL: {}console".format(build.build_url)
+line1 = "Alert! {} test build for Moto G5 Plus (potter) started at ".format(build.build_name) + currentDT.strftime("%d-%m-%Y %H:%M:%S IST.")
+line2 = "\nJenkins URL: {}console".format(build.build_url)
 message = line1+line2
 telegram_status = send_telegram_message(message)
 print("This is the Telegram status:", telegram_status)

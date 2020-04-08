@@ -46,10 +46,9 @@ def send_telegram_message(message):
         return False
 
 
-line1 = "Alert! {} build failed at ".format(
-    url.build_name) + currentDT.strftime("%d-%m-%Y %H:%M:%S IST.\n")
+line1 = "Alert! {} build failed at ".format(build.build_name) + currentDT.strftime("%d-%m-%Y %H:%M:%S IST.\n")
 line2 = "Duration: {}\n".format(total_execution_time)
-line3 = "Check for errors at: {}console".format(url.build_url)
+line3 = "Check for errors at: {}console".format(build.build_url)
 
 if check.check == 1:
     message = line1+line2+line3
