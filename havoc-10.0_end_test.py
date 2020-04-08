@@ -4,6 +4,7 @@ import requests
 import conf
 import datetime
 import time_count
+import url
 
 currentDT = datetime.datetime.now()
 
@@ -41,8 +42,8 @@ def send_telegram_message(message):
         return False
 
 line1 = "Alert! Havoc-OS test build {build_name} for Moto G5 Plus (potter) completed at " + currentDT.strftime("%d-%m-%Y %H:%M:%S IST.\n")
-line2 = "Duration : " + total_execution_time
-line3 = "\nBuild available at https://abhi-cloud.dyndns.org/index.php/s/1JgFedmXz3I5m3Q . "
+line2 = "Duration : {}\n".format(total_execution_time)
+line3 = "\nBuild available at {} .".format(url.download_url)
 message = line1 + line2 + line3
 telegram_status = send_telegram_message(message)
 print("This is the Telegram status:", telegram_status)
