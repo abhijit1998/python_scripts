@@ -3,21 +3,9 @@ import time
 import requests
 import conf
 import datetime
-import time_count
-import url
+import build
 
 currentDT = datetime.datetime.now()
-
-def convert(seconds): 
-    seconds = seconds % (24 * 3600) 
-    hour = seconds // 3600
-    seconds %= 3600
-    minutes = seconds // 60
-    seconds %= 60
-    return "%dh %02dm %02ds" % (hour, minutes, seconds) 
-
-total_time=int(time_count.end_time)-int(time_count.start_time)
-total_execution_time=convert(total_time)
 
 def send_telegram_message(message):
     """Sends message via Telegram"""
@@ -41,9 +29,9 @@ def send_telegram_message(message):
         print(e)
         return False
 
-line1 = "Alert! Havoc-OS test build {build_name} for Moto G5 Plus (potter) completed at " + currentDT.strftime("%d-%m-%Y %H:%M:%S IST.\n")
-line2 = "Duration : {}\n".format(total_execution_time)
-line3 = "\nBuild available at {} .".format(url.download_url)
-message = line1 + line2 + line3
+
+line1="Alert! {} test build for Moto G5 Plus (potter) started at ".format(build.build_name) + currentDT.strftime("%d-%m-%Y %H:%M:%S IST.")
+line2="\nJenkins URL: {}console".format(build.build_url)
+message = line1+line2
 telegram_status = send_telegram_message(message)
 print("This is the Telegram status:", telegram_status)
